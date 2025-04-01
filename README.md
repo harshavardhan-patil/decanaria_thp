@@ -62,7 +62,7 @@ You might require sudo access in certain cases. If you get permission denied run
     docker compose exec scrapy bash
     cd jobs_project
     scrapy crawl job_spider
-
+    exit
    ```
 
 3. Query the database and export the data:
