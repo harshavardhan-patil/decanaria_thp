@@ -15,7 +15,7 @@ class JobSpider(scrapy.Spider):
         self.logger.info(f"JSON Files: {self.json_files}")
     
     def start_requests(self):
-        # Just yield a dummy request to trigger the spider
+        # Yield a dummy request to trigger the spider
         yield scrapy.Request(url='file:///dev/null', callback=self.parse_files)
     
     def parse_files(self, response):
@@ -56,7 +56,7 @@ class JobSpider(scrapy.Spider):
                         },
                         employment_type=job_data.get('employment_type', ''),
                         hiring_organization=job_data.get('hiring_organization', ''),
-                        categories=job_data.get('categories', []), # Not sure how to handle multiple categories...
+                        categories=job_data.get('categories', [])[0]['name'], # Not sure how to handle multiple categories, selcting 1st for now
                         apply_url=job_data.get('apply_url', ''),
                         create_date=job_data.get('create_date', ''),
                         update_date=job_data.get('update_date', '')
