@@ -43,7 +43,7 @@ The pipeline will:
 4. Run the following command to start the services:
 
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
 
 ## Running the Pipeline
@@ -53,7 +53,7 @@ You might require sudo access in certain cases. If you get permission denied run
 1. Start the containers:
 
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
 
 2. Execute the Scrapy spider to process the JSON files:
@@ -62,13 +62,13 @@ You might require sudo access in certain cases. If you get permission denied run
     docker compose exec scrapy bash
     cd jobs_project
     scrapy crawl job_spider
-
+    exit
    ```
 
 3. Query the database and export the data:
 
    ```bash
-   docker-compose exec scrapy python query.py
+   docker compose exec scrapy python query.py
    ```
 
 4. The exported CSV file will be available in the `output/` directory.
@@ -78,11 +78,11 @@ You might require sudo access in certain cases. If you get permission denied run
 To stop the containers:
 
 ```bash
-docker-compose down
+docker compose down
 ```
 
 To remove the containers and volumes:
 
 ```bash
-docker-compose down -v
+docker compose down -v
 ```
